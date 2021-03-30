@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+class Node{
+	char key;
+    Node left, right;
+ 
+    public Node(char item)
+    {
+        key = item;
+        left = right = null;
+    }
+}
+
+public class Tree_Traversal {
+
+	 Node root;
+	 
+	 Tree_Traversal()
+	    {
+	        root = null;
+	    }
+	    void printPostorder(Node node)
+	    {
+	        if (node == null)
+	            return;
+	        printPostorder(node.left);
+	        printPostorder(node.right);
+	        System.out.print(node.key + " ");
+	    }
+	 
+	    
+	    void printInorder(Node node)
+	    {
+	        if (node == null)
+	            return;
+	        printInorder(node.left);
+	        System.out.print(node.key + " ");
+	        printInorder(node.right);
+	    }
+	 
+	   
+	    void printPreorder(Node node)
+	    {
+	        if (node == null)
+	            return;
+	 
+	        System.out.print(node.key + " ");
+	 
+	       
+	        printPreorder(node.left);
+	 
+	     
+	        printPreorder(node.right);
+	    }
+	 
+	    void printPostorder()  {     printPostorder(root);  }
+	    void printInorder()    {     printInorder(root);   }
+	    void printPreorder()   {     printPreorder(root);  }
+	 
+	    public static void main(String[] args)
+	    {
+	    	Tree_Traversal tree = new Tree_Traversal();
+	    	Scanner sc=new Scanner(System.in);
+	        tree.root = new Node('+');
+	        tree.root.left = new Node('-');
+	        tree.root.right = new Node('*');
+	        tree.root.left.left = new Node('4');
+	        tree.root.left.right = new Node('5');
+	        tree.root.right.left=new Node('7');
+	        tree.root.right.right=new Node('5');
+	 
+	        System.out.println("Preorder traversal of binary tree is ");
+	        tree.printPreorder();
+	 
+	        System.out.println("\nInorder traversal of binary tree is ");
+	        tree.printInorder();
+	 
+	        System.out.println("\nPostorder traversal of binary tree is ");
+	        tree.printPostorder();
+	    }
+
+}
